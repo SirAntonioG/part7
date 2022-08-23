@@ -1,14 +1,13 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { useState } from "react";
 
 import {
-  BrowserRouter as Router,
+  // BrowserRouter as Router,
   Routes,
   Route,
   Link,
   Navigate,
-  useParams,
+  // useParams,
   useNavigate,
   useMatch,
 } from "react-router-dom";
