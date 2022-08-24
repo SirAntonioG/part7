@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Alert, Navbar, Nav } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 
 import {
   Container,
@@ -12,6 +12,7 @@ import {
   Paper,
   TextField,
   Button,
+  Alert,
 } from "@mui/material";
 
 import {
@@ -159,7 +160,7 @@ const App = () => {
 
   return (
     <Container>
-      {message && <Alert variant="success">{message}</Alert>}
+      {message && <Alert severity="success">{message}</Alert>}
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
