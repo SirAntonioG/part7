@@ -1,6 +1,15 @@
 import React from "react";
 import { useState } from "react";
-import { Table, Form, Button, Alert, Navbar, Nav } from "react-bootstrap";
+import { Form, Button, Alert, Navbar, Nav } from "react-bootstrap";
+import {
+  Container,
+  Table,
+  TableBody,
+  TableRow,
+  TableCell,
+  TableContainer,
+  Paper,
+} from "@mui/material";
 
 import {
   // BrowserRouter as Router,
@@ -45,17 +54,21 @@ const Note = ({ note }) => {
 const Notes = ({ notes }) => (
   <div>
     <h2>Notes</h2>
-    <Table striped>
-      <tbody>
-        {notes.map((note) => (
-          <tr key={note.id}>
-            <td>
-              <Link to={`/notes/${note.id}`}>{note.content}</Link>
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </Table>
+
+    <TableContainer component={Paper}>
+      <Table>
+        <TableBody>
+          {notes.map((note) => (
+            <TableRow key={note.id}>
+              <TableCell>
+                <Link to={`/notes/${note.id}`}>{note.content}</Link>
+              </TableCell>
+              <TableCell>{note.user}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
   </div>
 );
 
@@ -142,7 +155,7 @@ const App = () => {
     : null;
 
   return (
-    <div className="container">
+    <Container>
       {message && <Alert variant="success">{message}</Alert>}
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -188,7 +201,7 @@ const App = () => {
         <br />
         <em>Note app, Department of Computer Science 2022</em>
       </div>
-    </div>
+    </Container>
   );
 };
 
