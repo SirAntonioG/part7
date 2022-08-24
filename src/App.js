@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import { Navbar, Nav } from "react-bootstrap";
 
 import {
   Container,
@@ -13,6 +12,9 @@ import {
   TextField,
   Button,
   Alert,
+  AppBar,
+  Toolbar,
+  IconButton,
 } from "@mui/material";
 
 import {
@@ -161,35 +163,27 @@ const App = () => {
   return (
     <Container>
       {message && <Alert severity="success">{message}</Alert>}
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="mr-auto">
-            <Nav.Link href="#" as="span">
-              <Link style={padding} to="/">
-                home
-              </Link>
-            </Nav.Link>
-            <Nav.Link href="#" as="span">
-              <Link style={padding} to="/notes">
-                notes
-              </Link>
-            </Nav.Link>
-            <Nav.Link href="#" as="span">
-              <Link style={padding} to="/users">
-                users
-              </Link>
-            </Nav.Link>
-            <Nav.Link href="#" as="span">
-              {user ? (
-                <em>{user} logged in</em>
-              ) : (
-                <Link to="/login">login</Link>
-              )}
-            </Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+          ></IconButton>
+          <Button color="inherit">
+            <Link to="/">home</Link>
+          </Button>
+          <Button color="inherit">
+            <Link to="/notes">notes</Link>
+          </Button>
+          <Button color="inherit">
+            <Link to="/users">users</Link>
+          </Button>
+          <Button color="inherit">
+            {user ? <em>{user} logged in</em> : <Link to="/login">login</Link>}
+          </Button>
+        </Toolbar>
+      </AppBar>
 
       <Routes>
         <Route path="/notes/:id" element={<Note notes={note} />} />
