@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import { Form, Button, Alert, Navbar, Nav } from "react-bootstrap";
+import { Alert, Navbar, Nav } from "react-bootstrap";
+
 import {
   Container,
   Table,
@@ -9,6 +10,8 @@ import {
   TableCell,
   TableContainer,
   Paper,
+  TextField,
+  Button,
 } from "@mui/material";
 
 import {
@@ -95,19 +98,19 @@ const Login = (props) => {
   return (
     <div>
       <h2>login</h2>
-      <Form onSubmit={onSubmit}>
-        <Form.Group>
-          <Form.Label>username:</Form.Label>
-          <Form.Control type="text" name="username" />
-          <Form.Label>password:</Form.Label>
-          <Form.Control type="password" name="password" />
-          <Button variant="primary" type="submit">
+      <form onSubmit={onSubmit}>
+        <div>
+          <TextField label="username" />
+        </div>
+        <div>
+          <TextField label="password" type="password" />
+        </div>
+        <div>
+          <Button variant="contained" color="primary" type="submit">
             login
           </Button>
-        </Form.Group>
-
-        <button type="submit">login</button>
-      </Form>
+        </div>
+      </form>
     </div>
   );
 };
