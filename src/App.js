@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Table, Form, Button } from "react-bootstrap";
+import { Table, Form, Button, Alert } from "react-bootstrap";
 
 import {
   // BrowserRouter as Router,
@@ -122,9 +122,14 @@ const App = () => {
   ]);
 
   const [user, setUser] = useState(null);
+  const [message, setMessage] = useState(null);
 
   const login = (user) => {
     setUser(user);
+    setMessage(`welcome ${user}`);
+    setTimeout(() => {
+      setMessage(null);
+    }, 10000);
   };
 
   const padding = {
@@ -138,6 +143,7 @@ const App = () => {
 
   return (
     <div className="container">
+      {message && <Alert variant="success">{message}</Alert>}
       <div>
         <Link style={padding} to="/">
           home
